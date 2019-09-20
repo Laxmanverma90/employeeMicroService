@@ -17,7 +17,7 @@ import lombok.extern.slf4j.Slf4j;
 
 /**
  * @author Laxman
- *
+ * @date 19 SEPT 2019
  */
 @Slf4j
 @RestController
@@ -28,10 +28,14 @@ public class EmployeeController {
 	@Autowired
 	private EmployeeService employeeService;
 	
+	/**
+	 * @param employeeId
+	 * @return EmployeeDto
+	 */
 	@GetMapping("/employee/{employeeId}")
 	public ResponseEntity<EmployeeDto> getManager(@PathVariable Integer employeeId){
 		
 		log.info("EmployeeController :: getManager --");
-		return new ResponseEntity<EmployeeDto>(employeeService.getManager(employeeId), HttpStatus.OK);
+		return new ResponseEntity<>(employeeService.getManager(employeeId), HttpStatus.OK);
 	}
 }

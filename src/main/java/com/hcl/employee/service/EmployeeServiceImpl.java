@@ -13,6 +13,10 @@ import com.hcl.employee.repository.EmployeeRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
+/**
+ * @author Laxman
+ * @date 19 SEPT 2019
+ */
 @Slf4j
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
@@ -23,10 +27,17 @@ public class EmployeeServiceImpl implements EmployeeService {
 	@Value("${employee.not.found.exception}")
 	private String employeeNotFound;
 
+	/**
+	 * @author Laxman
+	 * @date 19 SEPT 2019
+	 * 
+	 * @param Integer employeeId
+	 * @return EmployeeDto
+	 */
 	@Override
 	public EmployeeDto getManager(Integer employeeId) {
 
-		log.info("EmployeeServiceImpl :: getManager -- {}", employeeId);
+		log.info(" :: getManager -- START ---- {}", employeeId);
 		Optional<Employee> employeeOptional = employeeRepository.findById(employeeId);
 		if (!employeeOptional.isPresent()) {
 			throw new RecordNotFoundException(employeeNotFound);
@@ -34,6 +45,8 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 		EmployeeDto employeeDto = EmployeeDto.builder().employeeId(employeeId)
 				.managerId(employeeOptional.get().getManagerId()).build();
+
+		log.info(" :: getManager -- END ----");
 		return employeeDto;
 	}
 
