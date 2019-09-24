@@ -30,6 +30,6 @@ public class Employee {
 	private String password;
 	private Integer roleId;
 	private Integer managerId;
-	private LocalDate CreatedDate;
-	private LocalDate LoastModifiedDate;
+	private LocalDate createdDate;
+	private LocalDate loastModifiedDate;
 }

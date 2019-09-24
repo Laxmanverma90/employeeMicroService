@@ -32,7 +32,7 @@ public class EmployeeController {
 	 * @param employeeId
 	 * @return EmployeeDto
 	 */
-	@GetMapping("/employee/{employeeId}")
+	@GetMapping("/employees/{employeeId}")
 	public ResponseEntity<EmployeeDto> getManager(@PathVariable Integer employeeId){
 		
 		log.info("EmployeeController :: getManager --");

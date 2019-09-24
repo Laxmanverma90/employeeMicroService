@@ -39,13 +39,13 @@ public class EmployeeServiceImpl implements EmployeeService {
 
 		log.info(" :: getManager -- START ---- {}", employeeId);
 		Optional<Employee> employeeOptional = employeeRepository.findById(employeeId);
+		EmployeeDto employeeDto = null;
 		if (!employeeOptional.isPresent()) {
 			throw new RecordNotFoundException(employeeNotFound);
+		} else {
+			employeeDto = EmployeeDto.builder().employeeId(employeeId).managerId(employeeOptional.get().getManagerId())
+					.status("Success").message("Employee found.").build();
 		}
-
-		EmployeeDto employeeDto = EmployeeDto.builder().employeeId(employeeId)
-				.managerId(employeeOptional.get().getManagerId()).build();
-
 		log.info(" :: getManager -- END ----");
 		return employeeDto;
 	}

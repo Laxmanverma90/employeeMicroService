@@ -15,4 +15,6 @@ public class EmployeeDto {
 
 	private Integer employeeId;
 	private Integer managerId;
+	private String status;
+	private String message;
 }
